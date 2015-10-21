@@ -56,6 +56,19 @@
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 </xsl:text>
       </xsl:when>
+      <xsl:when test="/Input/Generation/Platform = 'tvOS'">
+        <xsl:text>Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+</xsl:text>
+      </xsl:when>
       <xsl:when test="/Input/Generation/Platform = 'WindowsPhone'">
         <xsl:text>Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -162,7 +175,7 @@ EndGlobal
     </xsl:variable>
     
     <xsl:choose>
-      <xsl:when test="/Input/Generation/Platform = 'iOS'">
+      <xsl:when test="/Input/Generation/Platform = 'iOS' or /Input/Generation/Platform = 'tvOS'">
         <xsl:text>		{</xsl:text>
         <xsl:value-of select="$guid" />
         <xsl:text>}.Ad-Hoc|iPhone.ActiveCfg = </xsl:text>
